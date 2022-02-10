@@ -1,10 +1,9 @@
-const { users } = require("../testData");
+const User = require("../models/user_schema");
 
 const resolvers = {
   Query: {
-    getAllUsers() {
-      //Get API Data
-      return users;
+    getAllUsers: async () => {
+      return await User.find({});
     },
   },
 };

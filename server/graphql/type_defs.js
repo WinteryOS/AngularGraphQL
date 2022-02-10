@@ -9,6 +9,14 @@ const typeDefs = gql`
   type Query {
     getAllUsers: [User!]!
   }
+  input UserInput {
+    fname: String!
+    street: String!
+    city: String!
+  }
+  type Mutation {
+    createUser(input: UserInput!): User!
+  }
 `;
 
 module.exports = { typeDefs };
