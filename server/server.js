@@ -57,6 +57,7 @@ const { typeDefs } = require("./graphql/type_defs");
 const { resolvers } = require("./graphql/resolvers");
 require("dotenv").config();
 require("./helpers/db/mongodb.js")();
+
 const port = process.env.PORT || 9000;
 
 const express = require("express");
