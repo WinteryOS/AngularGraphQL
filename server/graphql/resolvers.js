@@ -29,6 +29,20 @@ const resolvers = {
         });
       });
     },
+    createReview: (root, { input }) => {
+      const newReview = new Review(input);
+      return new Promise((resolve, object) => {
+        newReview.save((err) => {
+          if (err) {
+            return err;
+          } else {
+            resolve(newReview);
+          }
+        });
+      });
+    },
+    // DELETE USER
+    // DELETE REVIEW
   },
 };
 
