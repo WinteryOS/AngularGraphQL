@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'movie', component: MovieComponent },
+  { path: 'movie/:id', component: MovieComponent },
 ];
 
 @NgModule({

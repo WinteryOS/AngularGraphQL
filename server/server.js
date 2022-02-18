@@ -57,6 +57,7 @@ const { typeDefs } = require("./graphql/type_defs");
 const { resolvers } = require("./graphql/resolvers");
 require("dotenv").config();
 require("./helpers/db/mongodb.js")();
+const jsonwebtoken = require("jsonwebtoken");
 
 const port = process.env.PORT || 9000;
 
@@ -71,5 +72,25 @@ server.start().then((res) => {
   app.listen({ port: port }, () =>
     console.log(`Now browse to http://localhost:${port}${server.graphqlPath}`)
   );
+  app.use((req, res, next) => {
+    if (
+      req.headers &&
+      req.headers.authorization &&
+      req.headers.authorization.split(" ")[0] === "JWT"
+    ) {
+      jsonwebtoken.verify(
+        req.headers.authorization.split(" ")[1],
+        "MovieReviews",
+        (err, decode) => {
+          if (err) req.user = undefined;
+          req.user = decode;
+          next();
+        }
+      );
+    } else {
+      req.user = undefined;
+      next();
+    }
+  });
   module.exports = app;
 });

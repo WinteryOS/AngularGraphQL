@@ -1,6 +1,7 @@
 const User = require("../models/user_schema");
 const Review = require("../models/review_schema");
 const bcrypt = require("bcrypt");
+const jsonwebtoken = require("jsonwebtoken");
 
 const resolvers = {
   Query: {
@@ -10,13 +11,9 @@ const resolvers = {
     getAllReviews: async () => {
       return await Review.find({});
     },
-
-    //https://codeburst.io/build-a-simple-weather-app-with-node-js-in-just-16-lines-of-code-32261690901d
-    // https://developer.okta.com/blog/2021/10/22/angular-graphql
-    //https://www.youtube.com/watch?v=dp_64aX_6jI
   },
   Mutation: {
-    createUser: (root, { input }) => {
+    createUser: (_, { input }) => {
       const newUser = new User(input);
       newUser.hash_password = bcrypt.hashSync(input.password, 10);
       return new Promise((resolve, object) => {
@@ -29,7 +26,7 @@ const resolvers = {
         });
       });
     },
-    createReview: (root, { input }) => {
+    createReview: (_, { input }) => {
       const newReview = new Review(input);
       return new Promise((resolve, object) => {
         newReview.save((err) => {
@@ -41,7 +38,34 @@ const resolvers = {
         });
       });
     },
-    // DELETE USER
+    login: async (_, { input }) => {
+      const { username, password } = input;
+      const user = await User.findOne({ where: { username } });
+      if (!user) {
+        throw new Error("No user with that username");
+      }
+      const valid = await bcrypt.compare(password, user.hash_password);
+      if (!valid) {
+        throw new Error("Incorrect password");
+      }
+      return jsonwebtoken.sign({ username: user.username }, "MovieReviews", {
+        expiresIn: "1d",
+      });
+    },
+    deleteUser: async (_, { input }) => {
+      const user = await User.deleteOne({ _id: input });
+      if (!user) {
+        throw new Error("No user with that ID");
+      }
+      return "User Deleted";
+    },
+    deleteReview: async (_, { input }) => {
+      const review = await Review.deleteOne({ _id: input });
+      if (!review) {
+        throw new Error("No review with that ID");
+      }
+      return "User Deleted";
+    },
     // DELETE REVIEW
   },
 };

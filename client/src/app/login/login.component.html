@@ -1,12 +1,30 @@
 <div class="registerArea">
-    <hr>
+
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+  <p>
+    <label for="firstname">First Name </label>
+    <input type="text" id="firstname" name="firstname" formControlName="firstname">
+  </p>
+
+  <p>
+    <label for="lastname">Last Name </label>
+    <input type="text" id="lastname" name="lastname" formControlName="lastname">
+  </p>
+  <p>
+    <button type="submit">Submit</button>
+  </p>
+
+</form>
+
+    <!-- <hr>
       <label><b>Email</b></label>
       <input type="text" placeholder="Enter Email">
-  
+
       <label><b>Password</b></label>
       <input type="password" placeholder="Enter Password">
       <hr>
-  
-  
-      <button type="submit" class="registerbtn">Register</button>
+
+
+      <button type="submit" class="registerbtn">Register</button> -->
     </div>

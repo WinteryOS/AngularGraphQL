@@ -1,5 +1,7 @@
 <p>home works!</p>
 <div *ngFor="let movie of popularMovies; let i = index">
+  <a href='/movie/{{movie.id}}'>
   <img class="movie-img" src='https://image.tmdb.org/t/p/original{{movie.poster_path}}'/>
+</a>
   {{i}} {{movie.title}}
 </div>
