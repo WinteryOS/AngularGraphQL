@@ -1,5 +1,11 @@
 <p>home works!</p>
-<div *ngFor="let movie of popularMovies; let i = index">
-  <img class="movie-img" src='https://image.tmdb.org/t/p/original{{movie.poster_path}}'/>
-  {{i}} {{movie.title}}
+<div class="movie-list">
+  <div *ngFor="let movie of popularMovies; let i = index">
+    <div class="indiv-movie">
+      <img class="movie-img" src='https://image.tmdb.org/t/p/original{{movie.poster_path}}'/>
+      <div class="movie-title">
+        {{i}} {{movie.title}}
+      </div>
+    </div>
+  </div>
 </div>
