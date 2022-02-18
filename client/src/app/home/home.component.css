@@ -1,3 +1,29 @@
 .movie-img {
-  width: 80px;
+  width: 250px;
+}
+
+.movie-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.indiv-movie {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-title {
+  display: flex;
+  justify-content: center;
+}
+
+a.indiv-movie,
+a.indiv-movie:hover,
+a.indiv-movie:focus,
+a.indiv-movie:active {
+  text-decoration: none;
+  color: inherit;
 }
