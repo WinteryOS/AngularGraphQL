@@ -40,7 +40,7 @@ const resolvers = {
     },
     login: async (_, { input }) => {
       const { username, password } = input;
-      const user = await User.findOne({ where: { username } });
+      const user = await User.findOne({ username: username });
       if (!user) {
         throw new Error("No user with that username");
       }

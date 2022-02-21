@@ -1,16 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Apollo, gql } from 'apollo-angular';
-
-const GET_ALL_USERS = gql`
-  {
-    getAllUsers {
-      fname
-      city
-      street
-    }
-  }
-`;
+import { Apollo } from 'apollo-angular';
+import { Router } from '@angular/router';
+import { AUTHENTICATE_USER } from 'src/graphql';
 
 @Component({
   selector: 'app-login',
@@ -18,24 +10,34 @@ const GET_ALL_USERS = gql`
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo, private router: Router) {}
 
-  testData: any[] = [];
   contactForm = new FormGroup({
-    firstname: new FormControl(),
-    lastname: new FormControl(),
+    //VALIDATION EXAMPLE
+    // username: new FormControl('', [
+    //   Validators.required,
+    //   Validators.pattern(/[a-zA-Z ]*/),
+    // ]),
+    username: new FormControl(),
+    password: new FormControl(),
   });
 
   ngOnInit(): void {}
   onSubmit() {
-    // this.apollo
-    //   .watchQuery({
-    //     query: GET_ALL_USERS,
-    //   })
-    //   .valueChanges.subscribe((res: any) => {
-    //     console.log(res.data);
-    //     this.testData = res?.data;
-    //   });
-    console.log(this.contactForm.value);
+    this.apollo
+      .mutate({
+        mutation: AUTHENTICATE_USER,
+        variables: {
+          input: {
+            username: this.contactForm.value.username,
+            password: this.contactForm.value.password,
+          },
+        },
+      })
+      .subscribe((res: any) => {
+        console.log(res.data.login);
+        localStorage.setItem('token', JSON.stringify(res.data.login));
+        this.router.navigate(['/']);
+      });
   }
 }
