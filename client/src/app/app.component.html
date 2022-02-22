@@ -1,9 +1,15 @@
 <nav>
     <ul>
       <li><a routerLink="">Home</a></li>
-      <li><a routerLink="login">Login</a></li>
-      <li><a routerLink="register">Register</a></li>
+      <div *ngIf="!token">
+        <li><a routerLink="login">Login</a></li>
+        <li><a routerLink="register">Register</a></li>
+      </div>
+      <div *ngIf="token">
+        <li (click)="signOut()">Log Out</li>
+      </div>
     </ul>
+
   </nav>
 
 

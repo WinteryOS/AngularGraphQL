@@ -9,10 +9,10 @@ import { GET_ALL_USERS } from 'src/graphql';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  constructor(private apollo: Apollo, private http: HttpClient) {}
+
   testData: any[] = [];
   popularMovies: any[] = [];
-
-  constructor(private apollo: Apollo, private http: HttpClient) {}
 
   ngOnInit(): void {
     //GETS POPULAR DATA
