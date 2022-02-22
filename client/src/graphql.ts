@@ -19,3 +19,24 @@ export const CREATE_USER = gql`
     }
   }
 `;
+
+export const GET_ALL_USERS = gql`
+  {
+    getAllUsers {
+      fname
+      city
+      street
+    }
+  }
+`;
+
+export const GET_ALL_REVIEWS = gql`
+  {
+    getAllReviews {
+      movieId
+      username
+      rating
+      review
+    }
+  }
+`;

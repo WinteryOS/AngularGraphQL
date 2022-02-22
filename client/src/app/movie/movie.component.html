@@ -1,3 +1,6 @@
 <p>movie works!</p>
 <div>{{movie.title}}</div>
 <img class="temp-img" src='https://image.tmdb.org/t/p/original{{movie.poster_path}}'/>
+<div *ngFor="let review of reviews; let i = index">
+  Username: {{review.username}} | Rating: {{review.rating}} | Review: {{review.review}}
+</div>

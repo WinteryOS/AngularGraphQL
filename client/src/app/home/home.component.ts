@@ -1,16 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Apollo, gql } from 'apollo-angular';
-
-const GET_ALL_USERS = gql`
-  {
-    getAllUsers {
-      fname
-      city
-      street
-    }
-  }
-`;
+import { Apollo } from 'apollo-angular';
+import { GET_ALL_USERS } from 'src/graphql';
 
 @Component({
   selector: 'app-home',
@@ -42,7 +33,5 @@ export class HomeComponent implements OnInit {
         console.log(res.data);
         this.testData = res?.data;
       });
-
-    // this.apollo.use(uri).watchQuery()
   }
 }
