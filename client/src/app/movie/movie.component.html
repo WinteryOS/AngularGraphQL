@@ -1,6 +1,25 @@
 <p>movie works!</p>
 <div>{{movie.title}}</div>
 <img class="temp-img" src='https://image.tmdb.org/t/p/original{{movie.poster_path}}'/>
+<div class="movie-content" *ngIf="movie">
+  <img
+    class="poster-img"
+    src="https://image.tmdb.org/t/p/original{{movie.poster_path}}"
+  />
+
+  <div class="movie-descriptions">
+    <h1 class="white-text">{{movie.title}}</h1>
+    <div class="row bold">
+      <div *ngFor="genre in movie.genres">
+        <div style="padding: 20px 20px 20px 0px" class="genre-spacing">
+          {{ genre.name }}
+        </div>
+      </div>
+    </div>
+    <div style="line-height: 1.75">{{ movie.overview }}</div>
+    <div class="reviewButton">LEAVE A REVIEW</div>
+  </div>
+</div>
 <div *ngFor="let review of reviews; let i = index">
   Username: {{review.username}} | Rating: {{review.rating}} | Review: {{review.review}}
 </div>
