@@ -1,5 +1,7 @@
 .movie-img {
-  width: 250px;
+  width: 300px;
+  border-radius: 20px;
+  box-shadow: 7px 7px 5px grey;
 }
 
 .movie-list {
@@ -13,6 +15,7 @@
 .indiv-movie {
   display: flex;
   flex-direction: column;
+  padding-bottom: 20px;
 }
 
 .movie-title {

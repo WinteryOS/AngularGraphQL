@@ -3,9 +3,9 @@
   <div *ngFor="let movie of popularMovies; let i = index">
     <a href='/movie/{{movie.id}}' class="indiv-movie">
       <img class="movie-img" src='https://image.tmdb.org/t/p/original{{movie.poster_path}}'/>
-      <div class="movie-title">
+      <!--div class="movie-title">
         {{i}} {{movie.title}}
-      </div>
+      </div-->
     </a>
   </div>
 </div>
