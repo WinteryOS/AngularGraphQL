@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Apollo } from 'apollo-angular';
-import { GET_ALL_USERS } from 'src/graphql';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +7,8 @@ import { GET_ALL_USERS } from 'src/graphql';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private apollo: Apollo, private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  testData: any[] = [];
   popularMovies: any[] = [];
 
   ngOnInit(): void {
@@ -23,15 +20,6 @@ export class HomeComponent implements OnInit {
       .subscribe((res: any) => {
         console.log(res?.results);
         this.popularMovies = res?.results;
-      });
-    //GETS GRAPHQL DATA
-    this.apollo
-      .watchQuery({
-        query: GET_ALL_USERS,
-      })
-      .valueChanges.subscribe((res: any) => {
-        console.log(res.data);
-        this.testData = res?.data;
       });
   }
 }

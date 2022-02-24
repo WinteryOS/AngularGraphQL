@@ -1,1 +1,10 @@
-<p>admin works!</p>
+<div>TODO: Delete Users - Display and Delete Reviews </div>
+<br/>
+<div *ngFor="let user of allUsers; let i = index">
+  <div class="row">
+    <div>Username: {{user.username}} --</div>
+    <div>Email: {{user.email}} --</div>
+    <div>Admin: {{user.admin}} --</div>
+    <div>Password(Hashed) {{user.hash_password}}</div>
+  </div>
+</div>

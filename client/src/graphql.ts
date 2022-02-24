@@ -23,9 +23,10 @@ export const CREATE_USER = gql`
 export const GET_ALL_USERS = gql`
   {
     getAllUsers {
-      fname
-      city
-      street
+      username
+      hash_password
+      admin
+      email
     }
   }
 `;
