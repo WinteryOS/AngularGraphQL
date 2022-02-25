@@ -5,6 +5,7 @@ import { Apollo } from 'apollo-angular';
 import { GET_ALL_REVIEWS } from 'src/graphql';
 import { environment } from 'src/environments/environment';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-movie',
@@ -19,10 +20,16 @@ export class MovieComponent implements OnInit {
     private modalService: NgbModal
   ) {}
 
+  contactForm = new FormGroup({
+    ctrl: new FormControl(null, Validators.required),
+    message: new FormControl(null, Validators.required),
+  });
+
   closeResult = '';
   id: String | null = '';
   movie: any = '';
   reviews: any[] = [];
+  currentRate = 5;
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -62,6 +69,10 @@ export class MovieComponent implements OnInit {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         }
       );
+  }
+
+  onSubmit() {
+    console.log(this.contactForm.value);
   }
 
   private getDismissReason(reason: any): string {

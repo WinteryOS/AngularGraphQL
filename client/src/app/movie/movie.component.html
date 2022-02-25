@@ -28,13 +28,14 @@
     <h4>Leave A Review</h4>
     <div (click)="modal.dismiss()">X</div>
   </div>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
   <div class="modal-body">
-    <form>
-      <div>Text Area Input</div>
-      <div>Star Selector</div>
-    </form>
+      <textarea formControlName="message" maxlength="100" placeholder="Maximum of 100 characters"></textarea>
+      <br/>
+      <ngb-rating [(rate)]="currentRate" [max]="5" formControlName="ctrl"></ngb-rating>
   </div>
   <div class="modal-footer">
-    <div>ADD REVIEW</div>
+    <button type="submit">Add Review</button>
   </div>
+</form>
 </ng-template>
