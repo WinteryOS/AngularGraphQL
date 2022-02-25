@@ -20,9 +20,21 @@ export const CREATE_USER = gql`
   }
 `;
 
+export const DELETE_USER = gql`
+  mutation deleteUse($input: ID!) {
+    deleteUser(input: $input)
+  }
+`;
+export const DELETE_REVIEW = gql`
+  mutation deleteRev($input: ID!) {
+    deleteReview(input: $input)
+  }
+`;
+
 export const GET_ALL_USERS = gql`
   {
     getAllUsers {
+      _id
       username
       hash_password
       admin
@@ -34,6 +46,7 @@ export const GET_ALL_USERS = gql`
 export const GET_ALL_REVIEWS = gql`
   {
     getAllReviews {
+      _id
       movieId
       username
       rating

@@ -10,6 +10,11 @@ import { LoginComponent } from './login/login.component';
 import { MovieComponent } from './movie/movie.component';
 import { AdminComponent } from './admin/admin.component';
 import { GraphQLModule } from './graphql.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbPaginationModule,
+  NgbAlertModule,
+} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -26,6 +31,9 @@ import { GraphQLModule } from './graphql.module';
     HttpClientModule,
     GraphQLModule,
     ReactiveFormsModule,
+    NgbModule,
+    NgbPaginationModule,
+    NgbAlertModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

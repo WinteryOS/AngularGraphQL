@@ -1,10 +1,32 @@
-<div>TODO: Delete Users - Display and Delete Reviews </div>
-<br/>
+<h1>ALL USERS:</h1>
+<div class="row-space-between">
+  <h4>Username:</h4>
+    <h4>Email:</h4>
+    <h4>Admin:</h4>
+    <h4>Password(Hashed)</h4>
+    <h4></h4>
+</div>
 <div *ngFor="let user of allUsers; let i = index">
-  <div class="row">
-    <div>Username: {{user.username}} --</div>
-    <div>Email: {{user.email}} --</div>
-    <div>Admin: {{user.admin}} --</div>
-    <div>Password(Hashed) {{user.hash_password}}</div>
+  <div class="row-space-between">
+    <div>{{user.username}}</div>
+    <div>{{user.email}}</div>
+    <div>{{user.admin}}</div>
+    <div>{{user.hash_password}}</div>
+    <div (click)="deleteUser(user._id)">DELETE USER</div>
+  </div>
+</div>
+<h1>ALL REVIEWS:</h1>
+<div class="row-space-between">
+  <h4>Username:</h4>
+    <h4>Rating:</h4>
+    <h4>Review:</h4>
+    <h4></h4>
+</div>
+<div *ngFor="let review of allReviews; let i = index">
+  <div class="row-space-between">
+    <div>{{review.username}}</div>
+    <div>{{review.rating}}</div>
+    <div>{{review.review}}</div>
+    <div (click)="deleteReview(review._id)">DELETE REVIEW</div>
   </div>
 </div>

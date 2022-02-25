@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Apollo } from 'apollo-angular';
 import { GET_ALL_REVIEWS } from 'src/graphql';
+import { environment } from 'src/environments/environment';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-movie',
@@ -13,9 +15,11 @@ export class MovieComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private apollo: Apollo,
-    private http: HttpClient
+    private http: HttpClient,
+    private modalService: NgbModal
   ) {}
 
+  closeResult = '';
   id: String | null = '';
   movie: any = '';
   reviews: any[] = [];
@@ -25,7 +29,7 @@ export class MovieComponent implements OnInit {
     //GET INDIVIDUAL MOVIE DATA
     this.http
       .get(
-        `https://api.themoviedb.org/3/movie/${this.id}?api_key=21942037df64bd391a7cff90bc6755db&language=en-US`
+        `https://api.themoviedb.org/3/movie/${this.id}?api_key=${environment.apiKey}&language=en-US`
       )
       .subscribe((res: any) => {
         console.log(res);
@@ -45,5 +49,28 @@ export class MovieComponent implements OnInit {
         });
         console.log(this.reviews);
       });
+  }
+
+  open(content: any) {
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }
