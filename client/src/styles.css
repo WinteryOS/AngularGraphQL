@@ -3,4 +3,14 @@
 .row-space-between {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.border-test {
+  border: 1px solid black;
 }

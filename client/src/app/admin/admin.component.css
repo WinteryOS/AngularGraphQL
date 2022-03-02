@@ -1,1 +1,17 @@
+.user-section {
+  border-radius: 5px;
+  height: 365px;
+  overflow-y: scroll;
+  background-color: #fcfcfc;
+}
+.user-row {
+  border: 1px solid #eeeeee;
+  padding: 7px 0px;
+}
 
+.user-info {
+  width: 250px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
