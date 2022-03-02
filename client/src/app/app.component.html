@@ -5,6 +5,9 @@
         <li><a routerLink="login">Login</a></li>
         <li><a routerLink="register">Register</a></li>
       </div>
+      <div *ngIf="admin === 'true'">
+        <li><a routerLink="admin">Admin</a></li>
+      </div>
       <div *ngIf="token">
         <li (click)="signOut()">Log Out</li>
       </div>

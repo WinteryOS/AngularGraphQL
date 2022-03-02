@@ -1,3 +1,48 @@
 .temp-img {
   width: 150px;
 }
+.movie-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: -75px auto 0px auto;
+  text-align: left;
+}
+.movie-descriptions {
+  max-width: 550px;
+  padding: 0px 20px;
+}
+.review-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  grid-gap: 1rem;
+  justify-items: center;
+  align-items: center;
+  margin: 25px auto 25px auto;
+  max-width: 900px;
+  text-align: left;
+  border-radius: 10px;
+  background-color: #fbfbfb;
+  height: 375px;
+  overflow-y: scroll;
+  box-shadow: 1px 2px 7px rgba(0, 0, 0, 0.3);
+}
+.review-card {
+  padding: 20px;
+  margin: 10px;
+  width: 320px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.2);
+}
+.poster-img {
+  width: 250px;
+  border-radius: 7px;
+  box-shadow: 1px 2px 7px rgba(0, 0, 0, 0.4);
+}
+
+.d-inline-flex:focus {
+  outline: none !important;
+}

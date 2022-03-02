@@ -48,9 +48,11 @@ const resolvers = {
       if (!valid) {
         throw new Error("Incorrect password");
       }
-      return jsonwebtoken.sign({ username: user.username }, "MovieReviews", {
-        expiresIn: "1d",
-      });
+      return (
+        jsonwebtoken.sign({ username: user.username }, "MovieReviews", {
+          expiresIn: "1d",
+        }) + ` ${user.admin}`
+      );
     },
     deleteUser: async (_, { input }) => {
       const user = await User.deleteOne({ _id: input });

@@ -13,7 +13,7 @@ const typeDefs = gql`
     phone: String!
     username: String!
     admin: Boolean!
-    password: String!
+    hash_password: String!
   }
   type Review {
     _id: String!
