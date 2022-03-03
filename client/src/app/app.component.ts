@@ -14,13 +14,11 @@ export class AppComponent implements OnInit {
   admin: String | null = null;
 
   ngOnInit(): void {
-    console.log('INITIALIZED');
     this.token = JSON.parse(localStorage.getItem('token') || 'null');
     if (this.token) {
       let temp = this.token.split(' ');
       this.admin = temp[1];
     }
-    console.log(this.token);
   }
 
   signOut() {
@@ -28,6 +26,5 @@ export class AppComponent implements OnInit {
     this.token = null;
     this.admin = null;
     this.router.navigate(['/']);
-    console.log('SIGN OUT');
   }
 }

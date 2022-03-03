@@ -20,6 +20,17 @@ export const CREATE_USER = gql`
   }
 `;
 
+export const CREATE_REVIEW = gql`
+  mutation createReview($input: ReviewInput!) {
+    createReview(input: $input) {
+      username
+      rating
+      review
+      movieId
+    }
+  }
+`;
+
 export const DELETE_USER = gql`
   mutation deleteUse($input: ID!) {
     deleteUser(input: $input)

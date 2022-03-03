@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Apollo } from 'apollo-angular';
-import { GET_ALL_REVIEWS } from 'src/graphql';
+import { CREATE_REVIEW, GET_ALL_REVIEWS } from 'src/graphql';
 import { environment } from 'src/environments/environment';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -27,12 +27,17 @@ export class MovieComponent implements OnInit {
 
   closeResult = '';
   id: String | null = '';
+  // token: String | null = '';
+  tempUsername: String | undefined = '';
   movie: any = '';
   reviews: any[] = [];
   currentRate = 5;
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
+    const token = JSON.parse(localStorage.getItem('token') || 'null');
+    const tempArr = token.split(' ');
+    this.tempUsername = tempArr[2];
     //GET INDIVIDUAL MOVIE DATA
     this.http
       .get(
@@ -73,6 +78,26 @@ export class MovieComponent implements OnInit {
 
   onSubmit() {
     console.log(this.contactForm.value);
+    console.log(this.tempUsername);
+    // this.tempUsername = this.token?.split(' ');
+    // console.log(this.tempUsername[2] || undefined)
+    // console.log(tempUser[2] ?? "");
+    this.apollo
+      .mutate({
+        mutation: CREATE_REVIEW,
+        variables: {
+          input: {
+            username: this.tempUsername,
+            movieId: this.id,
+            rating: this.contactForm.value.ctrl,
+            review: this.contactForm.value.message,
+          },
+        },
+      })
+      .subscribe((res: any) => {
+        console.log(res.data.createReview);
+        //ADD REVIEW TEMPORARILY
+      });
   }
 
   private getDismissReason(reason: any): string {

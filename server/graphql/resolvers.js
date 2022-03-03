@@ -51,7 +51,9 @@ const resolvers = {
       return (
         jsonwebtoken.sign({ username: user.username }, "MovieReviews", {
           expiresIn: "1d",
-        }) + ` ${user.admin}`
+        }) +
+        ` ${user.admin}` +
+        ` ${user.username}`
       );
     },
     deleteUser: async (_, { input }) => {

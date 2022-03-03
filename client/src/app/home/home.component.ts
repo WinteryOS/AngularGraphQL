@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
         `https://api.themoviedb.org/3/movie/popular?api_key=${environment.apiKey}&language=en-US&page=1`
       )
       .subscribe((res: any) => {
-        console.log(res?.results);
+        // console.log(res?.results);
         this.popularMovies = res?.results;
       });
   }
