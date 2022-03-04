@@ -1,5 +1,9 @@
-<div>{{movie.title}}</div>
-<img class="temp-img" src='https://image.tmdb.org/t/p/original{{movie.poster_path}}'/>
+<div class="movie-poster">
+  <img
+  class="large-poster"
+  src="https://image.tmdb.org/t/p/original{{movie.poster_path}}"
+/>
+</div>
 <div class="movie-content" *ngIf="movie">
   <img
     class="poster-img"
