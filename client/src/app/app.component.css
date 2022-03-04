@@ -1,53 +1,54 @@
 .navWrap {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 .navWrapHome {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: 20px;
 }
 
 .navButton {
-    background-color: blueviolet;
-    width: 100px;
-    border-radius: 20px;
-    text-align: center;
-    padding: 5px;
+  background-color: blueviolet;
+  width: 100px;
+  border-radius: 20px;
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
 }
 
 .spacer {
-    padding-right: 5px;
-    padding-bottom: 30px;
+  padding-right: 5px;
+  padding-bottom: 30px;
 }
 
 .home {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: larger;
-    color: whitesmoke;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: larger;
+  color: whitesmoke;
 }
 
 .login {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: larger;
-    color: whitesmoke;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: larger;
+  color: whitesmoke;
 }
 
 .register {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: larger;
-    color: whitesmoke;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: larger;
+  color: whitesmoke;
 }
 
 .admin {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: larger;
-    color: whitesmoke;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: larger;
+  color: whitesmoke;
 }

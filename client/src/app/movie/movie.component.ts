@@ -96,6 +96,12 @@ export class MovieComponent implements OnInit {
       })
       .subscribe((res: any) => {
         console.log(res.data.createReview);
+        let obj = {
+          username: this.tempUsername,
+          rating: this.contactForm.value.ctrl,
+          review: this.contactForm.value.message,
+        };
+        this.reviews.push(obj);
         //ADD REVIEW TEMPORARILY
       });
   }

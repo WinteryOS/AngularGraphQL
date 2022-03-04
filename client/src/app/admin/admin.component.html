@@ -1,33 +1,33 @@
 <div style="padding:20px;">
 <div style="padding-right:20px;" class="row-space-between">
-  <h4 class="user-info">Username</h4>
-  <h4 class="user-info">Email</h4>
-  <h4 class="user-info">Admin</h4>
-  <h4 class="user-info">Password(Hashed)</h4>
-  <h4 class="user-info"></h4>
+  <h5 class="user-info">Username</h5>
+  <h5 class="user-info">Email</h5>
+  <h5 class="user-info">Admin</h5>
+  <h5 class="user-info">Password(Hashed)</h5>
+  <h5 class="user-info"></h5>
 </div>
 <div class="user-section">
 <div class="row-space-between user-row" *ngFor="let user of allUsers; let i = index">
-    <div class="user-info">{{user.username}}</div>
-    <div class="user-info">{{user.email}}</div>
-    <div class="user-info">{{user.admin}}</div>
-    <div class="user-info">{{user.hash_password}}</div>
-    <div class="user-info" (click)="deleteUser(user._id)">DELETE USER</div>
+    <div class="user-info ex-sp">{{user.username}}</div>
+    <div class="user-info ex-sp">{{user.email}}</div>
+    <div class="user-info ex-sp">{{user.admin}}</div>
+    <div class="user-info ex-sp">{{user.hash_password}}</div>
+    <div class="user-info"><div class="delete-btn" (click)="deleteUser(user._id)">DELETE</div></div>
 </div>
 </div>
 <div style="margin-top:50px; padding-right:20px;" class="row-space-between">
-  <h4 class="user-info">Username:</h4>
-  <h4 class="user-info">Rating:</h4>
-  <h4 class="user-info">Review:</h4>
-  <h4 class="user-info"></h4>
+  <h5 class="user-info">Username:</h5>
+  <h5 class="user-info">Rating:</h5>
+  <h5 class="user-info">Review:</h5>
+  <h5 class="user-info"></h5>
 </div>
 <div class="user-section">
 <div *ngFor="let review of allReviews; let i = index">
   <div class="row-space-between user-row">
-    <div class="user-info">{{review.username}}</div>
-    <div class="user-info">{{review.rating}}</div>
-    <div class="user-info">{{review.review}}</div>
-    <div class="user-info" (click)="deleteReview(review._id)">DELETE REVIEW</div>
+    <div class="user-info ex-sp">{{review.username}}</div>
+    <div class="user-info ex-sp"><ngb-rating [(rate)]="review.rating" [readonly]="true" [max]="5" ></ngb-rating></div>
+    <div class="user-info ex-sp">{{review.review}}</div>
+    <div class="user-info"><div class="delete-btn" (click)="deleteReview(review._id)">DELETE</div></div>
   </div>
 </div>
 </div>
