@@ -1,15 +1,37 @@
 <nav>
     <ul>
-      <li><a routerLink="">Home</a></li>
-      <div *ngIf="!token">
-        <li><a routerLink="login">Login</a></li>
-        <li><a routerLink="register">Register</a></li>
-      </div>
-      <div *ngIf="admin === 'true'">
-        <li><a routerLink="admin">Admin</a></li>
-      </div>
-      <div *ngIf="token">
-        <li (click)="signOut()">Log Out</li>
+      <div class="navWrapHome">
+        <div class="spacer">
+          <div class="navButton">
+            <a class="home" routerLink="">Home</a>
+          </div>
+        </div>
+        <div class="navWrap" *ngIf="!token">
+          <div class="spacer">
+            <div class="navButton">
+              <a class="login" routerLink="login">Login</a>
+            </div>
+          </div>
+          <div class="spacer">
+            <div class="navButton">
+              <a class="register" routerLink="register">Register</a>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="admin === 'true'">
+          <div class="spacer">
+            <div class="navButton">
+              <a class="admin" routerLink="admin">Admin</a>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="token">
+          <div class="spacer">
+            <div class="navButton">
+                <li (click)="signOut()">Log Out</li>
+            </div>
+          </div>
+        </div>
       </div>
     </ul>
 
