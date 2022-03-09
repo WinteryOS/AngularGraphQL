@@ -30,3 +30,8 @@ button {
 button:focus {
   outline: 0;
 }
+
+.error {
+  font-weight: 700;
+  color: rgb(202, 0, 0);
+}

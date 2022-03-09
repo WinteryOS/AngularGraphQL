@@ -8,6 +8,7 @@
       <label>Password </label>
       <input type="password" formControlName="password">
     </p>
+    <div *ngIf="errors" class="error">{{errors}}</div>
     <p>
       <button type="submit">Submit</button>
     </p>

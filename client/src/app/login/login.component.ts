@@ -13,14 +13,11 @@ export class LoginComponent implements OnInit {
   constructor(private apollo: Apollo, private router: Router) {}
 
   contactForm = new FormGroup({
-    //VALIDATION EXAMPLE
-    // username: new FormControl('', [
-    //   Validators.required,
-    //   Validators.pattern(/[a-zA-Z ]*/),
-    // ]),
     username: new FormControl(),
     password: new FormControl(),
   });
+
+  errors: string | null = null;
 
   ngOnInit(): void {}
   onSubmit() {
@@ -34,12 +31,20 @@ export class LoginComponent implements OnInit {
           },
         },
       })
-      .subscribe((res: any) => {
-        console.log(res.data.login);
-        localStorage.setItem('token', JSON.stringify(res.data.login));
-        this.router.navigate(['/']).then(() => {
-          window.location.reload();
-        });
-      });
+      .subscribe(
+        (res: any) => {
+          console.log(res.data.login);
+          if (res.data.login) {
+            console.log('Success');
+          } else {
+            console.log('Fail');
+          }
+          localStorage.setItem('token', JSON.stringify(res.data.login));
+          this.router.navigate(['/']).then(() => {
+            window.location.reload();
+          });
+        },
+        (error) => (this.errors = 'Invalid Username/Password')
+      );
   }
 }
