@@ -54,7 +54,7 @@
       <!-- <ngb-rating [(rate)]="currentRate" [max]="5" formControlName="ctrl"></ngb-rating> -->
       <ngb-rating [rate]="currentRate" [max]="5" formControlName="ctrl">
         <ng-template let-fill="fill">
-          <span class="starBig" [ngClass]="'yellow'"[class.filled]="fill === 100">&#9733;</span>
+          <span class="starBig" [class.filled]="fill === 100">&#9733;</span>
         </ng-template>
       </ngb-rating>
     </div>
