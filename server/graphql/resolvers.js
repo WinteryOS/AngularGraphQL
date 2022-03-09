@@ -70,7 +70,6 @@ const resolvers = {
       }
       return "User Deleted";
     },
-    // DELETE REVIEW
   },
 };
 

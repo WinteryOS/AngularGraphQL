@@ -25,6 +25,8 @@ export class AppComponent implements OnInit {
     localStorage.removeItem('token');
     this.token = null;
     this.admin = null;
-    this.router.navigate(['/']);
+    this.router.navigate(['/']).then(() => {
+      window.location.reload();
+    });
   }
 }

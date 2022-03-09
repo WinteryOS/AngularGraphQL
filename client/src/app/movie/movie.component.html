@@ -51,7 +51,6 @@
       <textarea formControlName="message" maxlength="100" placeholder="Maximum of 100 characters"></textarea>
       <br/>
       <div style="width: 100%; margin:0 auto">
-      <!-- <ngb-rating [(rate)]="currentRate" [max]="5" formControlName="ctrl"></ngb-rating> -->
       <ngb-rating [rate]="currentRate" [max]="5" formControlName="ctrl">
         <ng-template let-fill="fill">
           <span class="starBig" [class.filled]="fill === 100">&#9733;</span>

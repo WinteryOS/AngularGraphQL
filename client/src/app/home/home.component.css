@@ -30,3 +30,35 @@ a.indiv-movie:active {
   text-decoration: none;
   color: inherit;
 }
+
+.search-form {
+  background-color: #f8f8f8;
+  max-width: 500px;
+  margin: -20px auto 20px auto;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.561);
+}
+
+.search-form-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-input {
+  width: 250px;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 15px;
+  margin: 5px;
+  box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.561);
+}
+
+select {
+  border: none;
+  padding: 6px 15px 6px 10px;
+  margin: 5px;
+  box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.561);
+  border-radius: 10px;
+}

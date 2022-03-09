@@ -1,10 +1,36 @@
-<div class="movie-list">
+<form *ngIf="token" [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="search-form">
+  <h4 style="text-align:center">Begin By Search Any Movie!</h4>
+  <div class="search-form-content">
+  <input class="title-input" type="text" formControlName="title" placeholder="Search Movie Title or Actor">
+  <select formControlName="genre">
+    <option [ngValue]="null" disabled>Select Genre</option>
+    <option *ngFor="let genre of allGenres" [ngValue]="genre.id">{{genre.name}}</option>
+  </select>
+
+</div>
+<div class="search-form-content">
+<button style="margin:10px; background-color: rgb(2, 102, 2);" type="submit">Search</button>
+  <button style="margin:10px; background-color: rgb(163, 2, 2);" (click)="reset()">Reset</button>
+</div>
+</form>
+<div *ngIf="!searchedMovies.length" class="movie-list">
   <div *ngFor="let movie of popularMovies; let i = index">
+    <div *ngIf="token">
     <a href='/movie/{{movie.id}}' class="indiv-movie">
       <img class="movie-img" src='https://image.tmdb.org/t/p/original{{movie.poster_path}}'/>
-      <!--div class="movie-title">
-        {{i}} {{movie.title}}
-      </div-->
+    </a>
+    </div>
+    <div *ngIf="!token">
+      <a class="indiv-movie">
+        <img class="movie-img" src='https://image.tmdb.org/t/p/original{{movie.poster_path}}'/>
+      </a>
+      </div>
+  </div>
+</div>
+<div *ngIf="searchedMovies.length" class="movie-list">
+  <div *ngFor="let movie of searchedMovies; let i = index">
+    <a href='/movie/{{movie.id}}' class="indiv-movie">
+      <img class="movie-img" src='https://image.tmdb.org/t/p/original{{movie.poster_path}}'/>
     </a>
   </div>
 </div>
