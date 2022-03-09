@@ -12,18 +12,7 @@ import { CREATE_USER } from 'src/graphql';
 export class RegisterComponent implements OnInit {
   constructor(private apollo: Apollo, private router: Router) {}
 
-  errors: any = {
-    username: null,
-    password: null,
-    fname: null,
-    lname: null,
-    street: null,
-    city: null,
-    state: null,
-    zip_code: null,
-    email: null,
-    phone: null,
-  };
+  errors: any = {};
 
   contactForm = new FormGroup({
     username: new FormControl('', [
@@ -75,9 +64,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    if (this.errorCheck()) {
-      console.log('THERE IS AN ERROR');
-    } else {
+    if (!this.errorCheck()) {
       this.apollo
         .mutate({
           mutation: CREATE_USER,
