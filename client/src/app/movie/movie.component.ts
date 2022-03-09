@@ -32,10 +32,12 @@ export class MovieComponent implements OnInit {
   movie: any = '';
   reviews: any[] = [];
   currentRate = 5;
+  token: any = null;
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     const token = JSON.parse(localStorage.getItem('token') || 'null');
+    this.token = token;
     const tempArr = token.split(' ');
     this.tempUsername = tempArr[2];
     //GET INDIVIDUAL MOVIE DATA
